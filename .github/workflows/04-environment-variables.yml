@@ -5,11 +5,15 @@ on:
       - '.github/workflows/04-environment-variables.yml'
 env:
   VENI: 'I came'
+  A_FILE: 'file a'
+  B_FILE: 'file b'
+  
 jobs:
   use-env-vars:
     runs-on: ubuntu-latest
     env:
       VIDI: 'I saw'
+      CURRENT_FILE_NAME: $A_FILE
     steps:
       - uses: actions/checkout@v3
 
@@ -19,7 +23,15 @@ jobs:
         
       - name: Ubuntu GitHub Actions environment variables List
         run: env
-      
+      - name: choose file name
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            CURRENT_FILE_NAME=$B_FILE
+          else
+            CURRENT_FILE_NAME=$A_FILE
+          fi
+          echo "$CURRENT_FILE_NAME"
+          
       - name: Show me the vars
         run: echo "$VENI, $VIDI, $VICI"
         env:
