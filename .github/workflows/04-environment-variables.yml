@@ -17,9 +17,6 @@ jobs:
         working-directory: ./04-environment-variables
         run: pwd
         
-      - name: Ubuntu GitHub Actions environment variables List
-        run: env
-      
       - name: Show me the vars
         run: echo "$VENI, $VIDI, $VICI"
         env:
