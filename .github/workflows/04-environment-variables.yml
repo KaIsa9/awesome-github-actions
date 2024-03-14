@@ -23,9 +23,11 @@ jobs:
           VICI: 'I conquered'
       
       - name: Create env var
+        if: ${{ github.ref == 'pull_request' }}
         run: echo "foo=bar" >> $GITHUB_ENV
       
       - name: Useful default vars
+        if: ${{ github.event_name }} == 'pull_request'
         run: |
           echo "Workflow name:  $GITHUB_WORKFLOW"
           echo "Workspace:      $GITHUB_WORKSPACE"
