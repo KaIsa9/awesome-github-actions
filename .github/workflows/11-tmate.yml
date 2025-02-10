@@ -5,6 +5,7 @@ on:
     paths:
       - '11-tmate/**'
       - '.github/workflows/11-tmate.yml'
+  workflow_dispatch:
   
 jobs:
   my-job:          
