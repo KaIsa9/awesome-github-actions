@@ -1,5 +1,6 @@
 name: hello-world-example
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/01-hello-world.yml'
