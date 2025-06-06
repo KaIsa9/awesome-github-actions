@@ -1,5 +1,6 @@
 name: env-vars-example
 on:
+  workflow_dispatch:
   push:
     paths:
       - '.github/workflows/04-environment-variables.yml'
